@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+
+import Logo from "../components/Logo";
 import { COLORS } from "../constants/colors";
 
 export default function Login() {
@@ -25,7 +27,7 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.logo}>SIKKA</Text>
+        <Logo />
 
         <Text style={styles.title}>Welcome</Text>
 
@@ -82,19 +84,11 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
-  logo: {
-    color: COLORS.primary,
-    fontSize: 42,
-    fontWeight: "bold",
-    letterSpacing: 5,
-    marginBottom: 60,
-    alignSelf: "center",
-  },
-
   title: {
     color: COLORS.white,
     fontSize: 30,
     fontWeight: "700",
+    marginTop: 60,
     marginBottom: 8,
   },
 
