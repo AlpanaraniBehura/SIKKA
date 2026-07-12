@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import ActionCard from "../../components/ActionCard";
 import BalanceCard from "../../components/BalanceCard";
 import Header from "../../components/Header";
+import TransactionCard from "../../components/TransactionCard";
 import { COLORS } from "../../constants/colors";
 
 export default function Home() {
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+    >
       <Header />
 
       <BalanceCard />
@@ -43,11 +48,35 @@ export default function Home() {
       </Text>
 
       <View style={styles.transactionCard}>
-        <Text style={styles.emptyText}>
-          No transactions yet.
-        </Text>
+        <TransactionCard
+          title="Amazon"
+          subtitle="Today • 10:45 AM"
+          amount="- ₹899"
+          type="debit"
+          icon="cart-outline"
+        />
+
+        <View style={styles.divider} />
+
+        <TransactionCard
+          title="Salary"
+          subtitle="Yesterday"
+          amount="+ ₹45,000"
+          type="credit"
+          icon="cash-outline"
+        />
+
+        <View style={styles.divider} />
+
+        <TransactionCard
+          title="Coffee"
+          subtitle="Yesterday"
+          amount="- ₹120"
+          type="debit"
+          icon="cafe-outline"
+        />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -57,6 +86,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
     paddingHorizontal: 20,
     paddingTop: 60,
+  },
+
+  content: {
+    paddingBottom: 40,
   },
 
   sectionTitle: {
@@ -76,12 +109,13 @@ const styles = StyleSheet.create({
   transactionCard: {
     backgroundColor: COLORS.card,
     borderRadius: 16,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+    marginBottom: 30,
   },
 
-  emptyText: {
-    color: COLORS.gray,
-    textAlign: "center",
-    fontSize: 15,
+  divider: {
+    height: 1,
+    backgroundColor: "#1F2937",
   },
 });
